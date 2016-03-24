@@ -25,3 +25,10 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Additional Notes
+
+Cara mengubah path halaman admin dari zpanel menjadi yg lain :
+- app/Http/Middleware/AuthenticateAdmin ubah guest('zpanel').
+- app/Http/Controller/Controlle.php ubah variable admin_prefix.
+- app/Http/routes.php ubah prefix dari zpanel menjadi yg lain.

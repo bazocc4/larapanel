@@ -2,13 +2,33 @@
 
 use Illuminate\Database\Seeder;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
-
-class {{class}} extends Seeder
+class UsersTableSeeder extends Seeder
 {
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
     public function run()
     {
-        // TestDummy::times(20)->create('App\Post');
+        
+
+        \DB::table('users')->delete();
+        
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'name' => 'Andy Basuki',
+                'email' => 'andybasuki88@gmail.com',
+                'password' => '123456',
+                'remember_token' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+        ));
+        
+        
     }
 }
