@@ -158,7 +158,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -207,7 +206,7 @@ return [
         
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
-
+        'Helper'    => App\Helpers\Helper::class,
     ],
 
 ];

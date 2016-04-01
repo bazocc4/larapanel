@@ -40,6 +40,7 @@
             <div class="content">
                 <div class="title">Laravel 5.2</div>
                 <h2>Get the work done!</h2>
+                {{ Helper::dpr($result) }}
             </div>
         </div>
     </body>

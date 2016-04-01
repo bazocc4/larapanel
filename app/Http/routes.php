@@ -11,10 +11,22 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
+    /*
+	|--------------------------------------------------------------------------
+	| Back End Routing
+	|--------------------------------------------------------------------------
+	*/
+    Route::resource('settings', 'SettingsController');
+});
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+Route::group(['middleware' => 'web'], function () {
+
+    /*
+	|--------------------------------------------------------------------------
+	| Front End Routing
+	|--------------------------------------------------------------------------
+	*/
+    Route::get('/', 'HomeController@index');
 
 });
