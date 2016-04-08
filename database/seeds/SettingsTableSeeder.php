@@ -28,7 +28,7 @@ class SettingsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'key' => 'tagline',
+                'key' => 'keywords',
                 'value' => 'creative, business, solution',
                 'created_at' => NULL,
                 'updated_at' => NULL,

@@ -10,6 +10,11 @@ use DB;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +22,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
+/*
         $result = DB::table('settings')->select('id as settings_id', 'key');
         
         Helper::dpr($result->get());
@@ -24,6 +30,11 @@ class SettingsController extends Controller
         $final = $result->addSelect('value')->get();
 
         return Helper::call_dpr($final);
+*/
+        
+        return view('settings.index')->with([
+            'title' => 'Settings | '.$this->mySetting['title'],
+        ]);
     }
 
     /**

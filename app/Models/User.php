@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Eloquent;
 
 /**
  * Class User
  */
 class User extends Authenticatable
 {
-    protected $table = 'users';
-
     public $timestamps = true;
 
     protected $fillable = [
