@@ -21,7 +21,11 @@ class AuthenticateAdmin
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('admin/login');
+                // RedirectResponse guest( string $path, int $status = 302, array $headers = array(), bool $secure = null)
+                // NB: Create a new redirect response, while putting the current URL in the session.
+                return redirect()->guest('admin/login')->with([
+                    'auth_error' => 'Authorized access is required.'
+                ]);
             }
         }
 

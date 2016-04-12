@@ -12,16 +12,6 @@
 */
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
-    
-    /*
-	|--------------------------------------------------------------------------
-	| Back End Routing
-	|--------------------------------------------------------------------------
-	*/
-    Route::get('/', function(){
-        return redirect()->route('admin.settings.index');
-    });
-    
     /*
     |--------------------------------------------------------------------------
     | Route::resource
@@ -59,6 +49,11 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
         ]); // This will give you routes name such as prefix.faq.index, prefix.faq.store, etc.
     */
     
+    /*
+    |--------------------------------------------------------------------------
+    | Back End Routing
+    |--------------------------------------------------------------------------
+    */
     Route::resource('settings', 'SettingsController', ['only' => [
         'index', 'update',
     ]]);
@@ -73,6 +68,10 @@ Route::group(['middleware' => 'web'], function () {
 	*/
     Route::group(['prefix' => 'admin'], function(){
         Route::auth();
+        
+        Route::get('/', function(){
+            return redirect('admin/login');
+        });
     });
     
 

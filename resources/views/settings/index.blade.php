@@ -13,6 +13,10 @@
                     {{ Helper::dpr(Request::segments()) }}
                     
                     {{ Helper::dpr($user) }}
+                    
+                    {{ Helper::dpr('currentRouteName = '.Route::currentRouteName()) }}
+                    
+                    {{ Helper::dpr('currentRouteAction = '.Route::currentRouteAction()) }}
                 </div>
             </div>
         </div>

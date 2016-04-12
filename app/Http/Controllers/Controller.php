@@ -37,6 +37,10 @@ class Controller extends BaseController
         {
             $this->user = Auth::user()->toArray();
             View::share('user', $this->user);
+            
+            // user gravatar url link...
+            $profile_image = Helper::get_gravatar($this->user['email'], 100);
+            View::share('profile_image', $profile_image);
         }
     }
 }

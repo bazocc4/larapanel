@@ -13,6 +13,7 @@
 		</title>
         <!-- CSS INCLUDE -->
 		{{ HTML::style('css/theme-default.css') }}
+        {{ HTML::style('css/admin/style.css') }}
         <!-- EOF CSS INCLUDE -->
         
         <!-- JS INCLUDE-->

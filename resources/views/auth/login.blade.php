@@ -9,12 +9,35 @@
         </div>
         <br/>
         <div class="login-body">
-            @if( $errors->has('email') || $errors->has('password') )
-                <div class="message error text-center alert" style="border-radius:3px;background:#cc2424;padding:7px;margin-bottom:5px;" >
-                    <button style="color:white;" type="button" class="close" data-dismiss="alert">&times;</button>
-                    <h6 style="color:white;">{{ $errors->first('email').' '.$errors->first('password') }}</h6>
-                </div>
-            @endif
+            <?php
+                if( $errors->has('email') || $errors->has('password') )
+                {
+                    ?>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ $errors->first('email').' '.$errors->first('password') }}
+            </div>        
+                    <?php
+                }
+                else if(session('auth_error'))
+                {
+                    ?>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session('auth_error') }}
+            </div>        
+                    <?php
+                }
+                else if(session('logout_response'))
+                {
+                    ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session('logout_response') }}
+            </div>                
+                    <?php
+                }
+            ?>
             <div class="login-title"><strong>Log In</strong> to your account</div>
                
             {!! Form::open(['class' => 'form-horizontal', 'role' => 'form']) !!}

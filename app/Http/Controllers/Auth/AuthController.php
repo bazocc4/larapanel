@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Auth;
+
 class AuthController extends Controller
 {
     /*
@@ -76,6 +78,14 @@ class AuthController extends Controller
     {
         return view('auth.login')->with([
             'title' => 'Login | '.$this->mySetting['title'],
+        ]);
+    }
+    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('admin/login')->with([
+            'logout_response' => 'You have been logout.'
         ]);
     }
 }
