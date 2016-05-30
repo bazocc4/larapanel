@@ -57,6 +57,104 @@ class SettingsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            5 => 
+            array (
+                'id' => 6,
+                'key' => 'language',
+                'value' => 'id_indonesia
+en_english
+zh_chinese',
+                'created_at' => NULL,
+                'updated_at' => '2016-05-30 16:19:36',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'key' => 'google_analytics_code',
+                'value' => 'UA-33194544-1',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'key' => 'homepage_share',
+                'value' => '0',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'key' => 'display_width',
+                'value' => '3200',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'key' => 'display_height',
+                'value' => '1800',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'key' => 'display_crop',
+                'value' => '0',
+                'created_at' => NULL,
+                'updated_at' => '2016-05-30 16:21:06',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'key' => 'thumb_width',
+                'value' => '200',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'key' => 'thumb_height',
+                'value' => '200',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'key' => 'thumb_crop',
+                'value' => '0',
+                'created_at' => NULL,
+                'updated_at' => '2016-05-30 16:21:06',
+            ),
+            14 => 
+            array (
+                'id' => 15,
+                'key' => 'overwrite_image',
+                'value' => 'enable',
+                'created_at' => NULL,
+                'updated_at' => '2016-05-30 16:21:06',
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'key' => 'custom-pagination',
+                'value' => '10',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'key' => 'custom-email_contact',
+                'value' => 'andybasuki88@gmail.com',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

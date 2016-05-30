@@ -1,5 +1,5 @@
 <?php
-    $link = route('admin.settings.index');
+    $link = url( Request::segment(1) );
     $total_segments = count(Request::segments());
 ?>
 <ul class="breadcrumb">

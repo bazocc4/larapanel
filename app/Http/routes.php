@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
+Route::group(['middleware' => 'admin'], function(){
     /*
     |--------------------------------------------------------------------------
     | Route::resource
@@ -54,9 +54,21 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
     | Back End Routing
     |--------------------------------------------------------------------------
     */
-    Route::resource('settings', 'SettingsController', ['only' => [
-        'index', 'update',
-    ]]);
+    Route::group(['prefix' => 'admin'], function(){
+        Route::resource('settings', 'SettingsController', ['only' => [
+            'index', 'update',
+        ]]);
+        
+        Route::resource('users', 'UsersController');
+    });
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Background Process Routing
+    |--------------------------------------------------------------------------
+    */
+    Route::post('settings/add', 'SettingsController@add');
+    Route::get('settings/delete/{key}', 'SettingsController@delete');
 });
 
 Route::group(['middleware' => 'web'], function () {
@@ -73,7 +85,6 @@ Route::group(['middleware' => 'web'], function () {
             return redirect('admin/login');
         });
     });
-    
 
     /*
 	|--------------------------------------------------------------------------

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Helper;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.index')->with([
+            'title' => 'User Accounts | '.$this->mySetting['title'],
+        ]);
     }
 
     /**
@@ -25,7 +28,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create')->with([
+            'title' => 'Add User Account | '.$this->mySetting['title'],
+        ]);
     }
 
     /**
@@ -36,7 +41,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Helper::dpr($request->all());
+        exit;
     }
 
     /**

@@ -23,9 +23,11 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Andy Basuki',
                 'email' => 'andybasuki88@gmail.com',
                 'password' => '$2y$10$DHBjVXltXWq.ad89RMre1ea4giGFvwJCw3zVEiW6AJuMejWRnJLZ2',
-                'remember_token' => 'WDTVomNjmgtNIrMHnL11t3l4A5PMjsQFmSAuNgJag13fKziPPlV6LKDrzb5v',
+                'role' => 'admin',
+                'last_login' => NULL,
+                'remember_token' => '4PiMuwtOLkAQ58KmmcyhwkCo3NkcDg1V7Bm7xsVbKqRNc31Gdr4USOeW5laK',
                 'created_at' => NULL,
-                'updated_at' => '2016-04-12 02:48:45',
+                'updated_at' => '2016-05-30 16:47:14',
             ),
             1 => 
             array (
@@ -33,9 +35,11 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Super Admin',
                 'email' => 'admin@yahoo.com',
                 'password' => '$2y$10$Q5kIzwhgpGnrqjyFSQjiq.gXoe1SMzxDhZUWi/H1xPJLBDPAp/Lxy',
-                'remember_token' => '34pcg1AJ9xHIJPAtXR1KzXcQ3kHsNRv4i6NAKWf1F5459AOSzIloRB6xXbYl',
+                'role' => 'admin',
+                'last_login' => NULL,
+                'remember_token' => 'Ha4GkphyV7BLP0zjFkxFiyiPgORxE8iIKtOHMUkGNR6sqJ9xRF7hrG4dgajj',
                 'created_at' => '2016-04-05 09:17:24',
-                'updated_at' => '2016-04-12 02:17:40',
+                'updated_at' => '2016-05-30 16:47:22',
             ),
         ));
         

@@ -6,11 +6,13 @@
     <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Membership</span></a>
     <ul>
         <li id="menu-users">
-            <a href="#"><span class="fa fa-key"></span> <span class="xn-text">User Accounts</span></a>
+            <a href="{{ route('admin.users.index') }}"><span class="fa fa-key"></span> <span class="xn-text">User Accounts</span></a>
         </li>
+<!--
         <li id="menu-roles">
             <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">User Roles</span></a>
         </li>
+-->
     </ul>
 </li>
 <li id="menu-media-library">

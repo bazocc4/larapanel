@@ -30,6 +30,7 @@ class Controller extends BaseController
         // load all settings ...
         $this->mySetting = Setting::orderBy('id', 'asc')->get()->toArray();
         $this->mySetting = array_column($this->mySetting, 'value', 'key');
+        $this->mySetting['language'] = Helper::parse_lang($this->mySetting['language']);
         View::share('mySetting', $this->mySetting);
         
         // load current user if logged in ...

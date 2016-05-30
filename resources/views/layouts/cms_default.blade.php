@@ -11,6 +11,8 @@
         <meta name="author" content="{{ $mySetting['title'] }}">
         <meta name="keywords" content="{{ $mySetting['keywords'] }}">
         <meta name="description" content="{{ $mySetting['description'] }}">
+        
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- CMS ENGINE ONLY -->
         <meta name="robots" content="noindex">
         
@@ -27,6 +29,11 @@
         {{ HTML::script('js/plugins/jquery/jquery-ui.min.js') }}
         {{ HTML::script('js/plugins/bootstrap/bootstrap.min.js') }}
         <!-- EOF JS INCLUDE -->
+        
+        <!-- GLOBAL JAVASCRIPT VARIABLE -->
+        <script type="text/javascript">
+			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		</script>
     </head>
     <body class="page-container-boxed">
         <!-- START PAGE CONTAINER -->
@@ -102,25 +109,25 @@
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
                                 <a href="#" class="list-group-item">
                                     <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
+                                    <img src="{{ url('img/users/user2.jpg') }}" class="pull-left" alt="John Doe"/>
                                     <span class="contacts-title">John Doe</span>
                                     <p>Praesent placerat tellus id augue condimentum</p>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
+                                    <img src="{{ url('img/users/user.jpg') }}" class="pull-left" alt="Dmitry Ivaniuk"/>
                                     <span class="contacts-title">Dmitry Ivaniuk</span>
                                     <p>Donec risus sapien, sagittis et magna quis</p>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
+                                    <img src="{{ url('img/users/user3.jpg') }}" class="pull-left" alt="Nadia Ali"/>
                                     <span class="contacts-title">Nadia Ali</span>
                                     <p>Mauris vel eros ut nunc rhoncus cursus sed</p>
                                 </a>
                                 <a href="#" class="list-group-item">
                                     <div class="list-group-status status-offline"></div>
-                                    <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/>
+                                    <img src="{{ url('img/users/user6.jpg') }}" class="pull-left" alt="Darth Vader"/>
                                     <span class="contacts-title">Darth Vader</span>
                                     <p>I want my money back!</p>
                                 </a>
@@ -215,15 +222,51 @@
         
     <!-- START SCRIPTS -->
         <!-- THIS PAGE PLUGINS -->
+        {{ HTML::script('js/plugins/icheck/icheck.min.js') }}
         {{ HTML::script('js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') }}
-        <!-- END PAGE PLUGINS -->         
-
+        
+        {{ HTML::script('js/plugins/bootstrap/bootstrap-datepicker.js') }}
+        {{ HTML::script('js/plugins/bootstrap/bootstrap-file-input.js') }}
+        {{ HTML::script('js/plugins/bootstrap/bootstrap-select.js') }}
+        {{ HTML::script('js/plugins/tagsinput/jquery.tagsinput.min.js') }}
+        <!-- END PAGE PLUGINS -->
+        
         <!-- START TEMPLATE -->
         {{ HTML::script('js/plugins.js') }}
         {{ HTML::script('js/actions.js') }}
         <!-- END TEMPLATE -->
         
         @yield('script')
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // set active to sidebar parent menu !!
+                var $childMenuActive = $('ul.x-navigation > li.xn-openable > ul > li.active');
+                if( $childMenuActive.length )
+                {
+                    $childMenuActive.closest('li.xn-openable').addClass('active');
+                }
+                
+                // give red font to required field !!
+                if($('[required="required"]').length)
+                {
+                    $('[required="required"]').each(function(){
+                        var $label = $(this).closest('.form-group').find('label:first');
+                        if($label.length)
+                        {
+                            $label.css('color', 'red');
+                        }
+                    });
+                }
+                
+                // callback function after reset form !!
+                $(document).on('click', 'form [type="reset"]', function(){
+                    var $form = $(this).closest('form');
+                    $form[0].reset();
+                    $form.find('.icheckbox,.iradio').iCheck('update');
+                    $form.find(".select").selectpicker('refresh').trigger('change');
+                });
+            });
+        </script>
     <!-- END SCRIPTS -->         
     </body>
 </html>

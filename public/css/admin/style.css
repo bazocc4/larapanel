@@ -38,3 +38,69 @@ th > a.desc:after {
 .x-navigation > li.xn-logo > a:first-child {
  height: auto;
 }
+
+.help-block{
+    font-size: 12px;
+    color: #586377;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.help-block-cog{
+    text-indent: 35px;
+}
+
+.margin0{
+    margin: 0px !important;
+}
+
+form .notes.important{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.input-group.dimension input[type="number"]{
+    width: 100px;
+}
+
+.form-group .check{
+    margin-right: 30px;
+}
+
+.form-group span.input-tail{
+    float: left;
+    margin: 6px;
+}
+
+/* ============================ */
+/* All kind of input width type */
+/* ============================ */
+.input-mini {
+  width: 60px !important;
+}
+
+.input-small {
+  width: 90px !important;
+}
+
+.input-medium {
+  width: 150px !important;
+}
+
+.input-large {
+  width: 210px !important;
+}
+
+.input-xlarge {
+  width: 270px !important;
+}
+
+.input-xxlarge {
+  width: 530px !important;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: #f5f5f5;
+}

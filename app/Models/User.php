@@ -16,12 +16,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     protected $guarded = [];
     
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'last_login',
     ];
 
     public function user_metas() {
@@ -48,8 +49,8 @@ class User extends Authenticatable
 	public function getPassword() {
 		return $this->password;
 	}
-
-	/**
+    
+    /**
 	 * @return mixed
 	 */
 	public function getRememberToken() {

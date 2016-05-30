@@ -2545,7 +2545,7 @@ label.valid {
   padding: 5px 10px;
 }
 .page-title h2 {
-  float: left;
+  text-align: left;
   line-height: 30px;
 }
 h1,

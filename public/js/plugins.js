@@ -4,8 +4,11 @@ $(function() {
         // Bootstrap datepicker
         var feDatepicker = function(){                        
             if($(".datepicker").length > 0){
-                $(".datepicker").datepicker({format: 'yyyy-mm-dd'});                
-                $("#dp-2,#dp-3,#dp-4").datepicker(); // Sample
+                $(".datepicker").datepicker({
+                    format: 'yyyy-mm-dd',
+                    autoclose: true,
+                });                
+//                $("#dp-2,#dp-3,#dp-4").datepicker(); // Sample
             }           
             
         }// END Bootstrap datepicker
@@ -49,15 +52,6 @@ $(function() {
         var feSelect = function(){
             if($(".select").length > 0){
                 $(".select").selectpicker();
-                
-                $(".select").on("change", function(){
-                    if($(this).val() == "" || null === $(this).val()){
-                        if(!$(this).attr("multiple"))
-                            $(this).val("").find("option").removeAttr("selected").prop("selected",false);
-                    }else{
-                        $(this).find("option[value="+$(this).val()+"]").attr("selected",true);
-                    }
-                });
             }
         }//END Bootstrap select
         
