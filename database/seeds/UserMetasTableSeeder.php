@@ -125,6 +125,24 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => '2016-06-01 16:32:01',
                 'updated_at' => '2016-06-01 16:32:01',
             ),
+            12 => 
+            array (
+                'id' => 13,
+                'user_id' => 1,
+                'key' => 'gender',
+                'value' => 'Male',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'user_id' => 2,
+                'key' => 'gender',
+                'value' => 'Male',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         
