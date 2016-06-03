@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+use App\Models\User;
+use Helper;
+use Hash;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +32,23 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 
-        //
+        User::saving(function($users){
+            
+            if($users->__isset('password'))
+            {
+                $pass = $users->getAttribute('password');
+                
+                if( Hash::needsRehash($pass) )
+                {
+                    $users->setAttribute('password', bcrypt($pass) );
+                }
+            }
+            
+            if($users->__isset('password_confirmation'))
+            {
+                $users->__unset('password_confirmation');
+            }
+            
+        });
     }
 }

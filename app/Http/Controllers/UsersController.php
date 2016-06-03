@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Helper;
 
+use App\Models\User;
+use App\Models\UserMeta;
+
 class UsersController extends Controller
 {
     /**
@@ -16,8 +19,21 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $sort = "created_at";
+		$direction = "DESC";
+        
+        $query = User::with('user_metas')
+            ->orderBy($sort, $direction)
+            ->paginate($this->mySetting['custom-pagination'])
+            ->toArray();
+        
+        $query['data'] = array_map(function($value){ return Helper::breakUserMetas($value); }, $query['data'] );
+        
         return view('users.index')->with([
             'title' => 'User Accounts | '.$this->mySetting['title'],
+            'content' => $query,
+            'sort' => $sort,
+            'direction' => $direction,
         ]);
     }
 
@@ -41,8 +57,33 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        Helper::dpr($request->all());
-        exit;
+        $data = $request->all()['data'];
+        
+        $users = new User;
+        
+        if( ! $users->fill($data['User'])->isValid() )
+        {
+            return redirect()->back()->withInput()->withErrors($users->errors);
+        }
+        
+        // if the user input is valid then save it !!
+        $users->save();
+        
+        // save UserMeta !!
+        $data['UserMeta'] = array_filter( array_map('trim', $data['UserMeta'] ) );
+        if(!empty($data['UserMeta']))
+        {
+            foreach($data['UserMeta'] as $key => $value)
+            {
+                UserMeta::create([
+                    'user_id' => $users->id,
+                    'key' => $key,
+                    'value' => $value,
+                ]);
+            }
+        }
+        
+        return redirect()->route('admin.users.index')->with('flash_message', 'New User added to the database successfully!');
     }
 
     /**

@@ -74,5 +74,31 @@
         {
             return strtolower( substr($src,0,2).'_'.substr($src,5) );
         }
+        
+        public static function breakUserMetas($value)
+        {
+            if(!empty($value['user_metas']))
+            {
+                $value['user_metas'] = array_filter(array_column($value['user_metas'], 'value', 'key'));
+            }
+            
+            return $value;
+        }
+        
+        /**
+        * convert date text to selected date format from template settings
+        * @param date $value contains source date
+        * @param string $date contains date format selected
+        * @param string $time contains time format selected
+        * @return string new date format
+        * @public
+        **/
+        public static function date_converter($value , $date , $time=NULL)
+        {	
+            $value = strtotime($value);
+            $newDate = date($date , $value);
+            $newTime = date($time , $value);
+            return $newDate.(empty($time)?'':' @ '.$newTime);
+        }
     }
 ?>

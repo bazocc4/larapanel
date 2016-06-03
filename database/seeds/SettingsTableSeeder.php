@@ -47,7 +47,7 @@ class SettingsTableSeeder extends Seeder
                 'key' => 'date_format',
                 'value' => 'd M Y',
                 'created_at' => NULL,
-                'updated_at' => NULL,
+                'updated_at' => '2016-06-01 14:52:46',
             ),
             4 => 
             array (
@@ -63,9 +63,10 @@ class SettingsTableSeeder extends Seeder
                 'key' => 'language',
                 'value' => 'id_indonesia
 en_english
+id_indonesia
 zh_chinese',
                 'created_at' => NULL,
-                'updated_at' => '2016-05-30 16:19:36',
+                'updated_at' => '2016-06-01 14:52:24',
             ),
             6 => 
             array (

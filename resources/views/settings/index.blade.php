@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group {{ $user['role']=='super_admin'?'':'hidden' }}">
                             {{ Form::label('language[]','Language',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <?php
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group {{ $user['role']=='super_admin'?'':'hidden' }}">
                             {{ Form::label('default_language','Default Language',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 {{ Form::select('default_language',$default_language,Helper::unparse_lang($mySetting['language'][0]), [
@@ -255,7 +255,7 @@
                                     {{ Form::text($key10,$value10,['class'=>'form-control']) }}
                                 </div>
                             </div>
-                            <button alt="{{ $key10 }}" type="button" class="btn btn-danger del_setting">Remove</button>
+                            <button alt="{{ $key10 }}" type="button" class="btn btn-danger del_setting {{ $user['role']=='super_admin'?'':'hidden' }}">Remove</button>
                         </div>            
                                     <?php
                                 }
@@ -263,7 +263,7 @@
                         ?>
                         
                         <!-- Dynamic custom settings -->
-                        <div class="form-group">
+                        <div class="form-group {{ $user['role']=='super_admin'?'':'hidden' }}">
                             {{ Form::label(null,'(New Key)',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">

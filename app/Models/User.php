@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent;
+use Validator;
 
 /**
  * Class User
@@ -16,14 +17,32 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'password_confirmation',
         'role',
+        'status',
     ];
 
     protected $guarded = [];
     
     protected $hidden = [
-        'password', 'remember_token', 'last_login',
+        'password', 'remember_token',
     ];
+    
+    public static $rules = [
+        'name'  => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:5|confirmed',
+    ];
+    
+    public function isValid()
+    {
+        $validation = Validator::make($this->attributes, static::$rules);
+
+        if ($validation->passes()) return true;
+
+        $this->errors = $validation->messages();
+        return false;
+    }
 
     public function user_metas() {
         return $this->hasMany('App\Models\UserMeta');

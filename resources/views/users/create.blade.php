@@ -8,18 +8,23 @@
     <div class="row">
         <div class="col-md-12">
             <?php
-                if(session('success'))
+                if( count($errors) )
                 {
                     ?>      
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                {{ session('success') }}
+                
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
                     <?php
                 }
             ?>
             {{ Form::open([
-              'class' => 'form-horizontal',
+              'class' => 'form-horizontal notif-change',
               'role' => 'form',
               'method' => 'POST',
               'accept-charset' => 'UTF-8',
@@ -147,11 +152,11 @@
                         </div>
                         
                         <div class="form-group">                                        
-                            {{ Form::label('data[User][confirm]','Confirm Password',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('data[User][password_confirmation]','Password Confirm',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                    {{ Form::password('data[User][confirm]',['class' => 'form-control input-large', 'required' => 'required']) }}
+                                    {{ Form::password('data[User][password_confirmation]',['class' => 'form-control input-large', 'required' => 'required']) }}
                                 </div>
                             </div>
                         </div>

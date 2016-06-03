@@ -51,19 +51,15 @@
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="{{ $profile_image }}" alt="John Doe"/>
+                            <img src="{{ $profile_image }}" alt="{{ $user['name'] }}"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="{{ $profile_image }}" alt="John Doe"/>
+                                <img src="{{ $profile_image }}" alt="{{ $user['name'] }}"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">John Doe</div>
-                                <div class="profile-data-title">Web Developer/Designer</div>
-                            </div>
-                            <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+                                <div class="profile-data-name">{{ $user['name'] }}</div>
+                                <div class="profile-data-title">{{ Helper::string_unslug($user['role']) }}</div>
                             </div>
                         </div>                                                                        
                     </li>
@@ -83,13 +79,6 @@
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right last">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
@@ -185,6 +174,15 @@
                         </div>                        
                     </li>
                     <!-- END TASKS -->
+                    <!-- LIVEDATE -->
+                    <li class="pull-right">
+                        <div class="live-time">
+                            <?php echo date($mySetting['date_format']); ?>
+                            &nbsp;<span class="fa fa-clock-o"></span>&nbsp;
+                            <span id="clock"></span>
+                        </div>
+					</li>
+                   <!-- END LIVEDATE -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
                 
@@ -229,11 +227,14 @@
         {{ HTML::script('js/plugins/bootstrap/bootstrap-file-input.js') }}
         {{ HTML::script('js/plugins/bootstrap/bootstrap-select.js') }}
         {{ HTML::script('js/plugins/tagsinput/jquery.tagsinput.min.js') }}
+        
+        {{ HTML::script('js/livedate.js') }}
         <!-- END PAGE PLUGINS -->
         
         <!-- START TEMPLATE -->
         {{ HTML::script('js/plugins.js') }}
         {{ HTML::script('js/actions.js') }}
+        {{ HTML::script('js/admin.js') }}
         <!-- END TEMPLATE -->
         
         @yield('script')
