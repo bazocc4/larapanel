@@ -77,9 +77,27 @@
         
         public static function breakUserMetas($value)
         {
-            if(!empty($value['user_metas']))
+            if(is_object($value))
             {
-                $value['user_metas'] = array_filter(array_column($value['user_metas'], 'value', 'key'));
+                if(!empty($value->user_metas))
+                {
+                    foreach($value->user_metas as $objKey => $objValue)
+                    {
+                        if(!empty($objValue->value))
+                        {
+                            $value->user_metas->{$objValue->key} = $objValue->value;
+                        }
+                        
+                        unset($value->user_metas[$objKey]);
+                    }
+                }
+            }
+            else
+            {
+                if(!empty($value['user_metas']))
+                {
+                    $value['user_metas'] = array_filter(array_column($value['user_metas'], 'value', 'key'));
+                }
             }
             
             return $value;
@@ -99,6 +117,17 @@
             $newDate = date($date , $value);
             $newTime = date($time , $value);
             return $newDate.(empty($time)?'':' @ '.$newTime);
+        }
+        
+        public static function pagination_links($object)
+        {
+            $pagination = [
+                'first' => ( $object->currentPage() > 1 ? $object->url(1) : '' ),
+                'content' => $object->links(),
+                'last' => ( $object->currentPage() < $object->lastPage() ? $object->url( $object->lastPage() ) : '' ),
+            ];
+            
+            return $pagination;
         }
     }
 ?>

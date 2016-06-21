@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Eloquent;
 use Validator;
+use Hash;
 
 /**
  * Class User
@@ -28,20 +29,64 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public static $rules = [
-        'name'  => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:5|confirmed',
-    ];
+    public static function boot()
+    {
+        parent::boot();
+        
+        static::saving(function($users){
+            
+            if($users->__isset('password'))
+            {
+                $pass = $users->getAttribute('password');
+                
+                if( Hash::needsRehash($pass) )
+                {
+                    $users->setAttribute('password', bcrypt($pass) );
+                }
+            }
+            
+            if($users->__isset('password_confirmation'))
+            {
+                $users->__unset('password_confirmation');
+            }
+            
+        });
+        
+        static::deleting(function($users){
+            $users->user_metas()->delete();
+        });
+    }
+    
+    public static function rules($id)
+    {
+        return [
+            'name'  => 'required',
+            
+            // unique validation format => unique:table,column,except,idColumn
+            'email' => 'required|email|unique:users,email'.( $id ? ','.$id : '' ),
+            
+            'password' => ( $id ? '' : 'required|' ).'min:5|confirmed',
+        ];
+    }
     
     public function isValid()
     {
-        $validation = Validator::make($this->attributes, static::$rules);
+        $validation = Validator::make( $this->attributes , self::rules($this->id) );
 
-        if ($validation->passes()) return true;
-
-        $this->errors = $validation->messages();
-        return false;
+        if($validation->passes())
+        {
+            if(empty($this->password)) // user don't plan to change password !!
+            {
+                unset($this->password);
+            }
+            
+            return true;
+        }
+        else
+        {
+            $this->errors = $validation->messages();
+            return false;
+        }
     }
 
     public function user_metas() {

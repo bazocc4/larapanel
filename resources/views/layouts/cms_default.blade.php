@@ -235,6 +235,7 @@
         {{ HTML::script('js/plugins.js') }}
         {{ HTML::script('js/actions.js') }}
         {{ HTML::script('js/admin.js') }}
+        {{ HTML::script('js/ajax.js') }}
         <!-- END TEMPLATE -->
         
         @yield('script')

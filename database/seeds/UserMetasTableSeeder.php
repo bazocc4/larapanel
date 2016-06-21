@@ -19,33 +19,6 @@ class UserMetasTableSeeder extends Seeder
         \DB::table('user_metas')->insert(array (
             0 => 
             array (
-                'id' => 1,
-                'user_id' => 3,
-                'key' => 'gender',
-                'value' => 'Male',
-                'created_at' => '2016-05-31 14:41:36',
-                'updated_at' => '2016-05-31 14:41:36',
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'user_id' => 3,
-                'key' => 'dob',
-                'value' => '2016-05-31',
-                'created_at' => '2016-05-31 14:41:36',
-                'updated_at' => '2016-05-31 14:41:36',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'user_id' => 3,
-                'key' => 'job',
-                'value' => 'Developer',
-                'created_at' => '2016-05-31 14:41:36',
-                'updated_at' => '2016-05-31 14:41:36',
-            ),
-            3 => 
-            array (
                 'id' => 4,
                 'user_id' => 4,
                 'key' => 'gender',
@@ -53,7 +26,7 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => '2016-05-31 14:45:07',
                 'updated_at' => '2016-05-31 14:45:07',
             ),
-            4 => 
+            1 => 
             array (
                 'id' => 5,
                 'user_id' => 4,
@@ -62,16 +35,16 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => '2016-05-31 14:45:07',
                 'updated_at' => '2016-05-31 14:45:07',
             ),
-            5 => 
+            2 => 
             array (
                 'id' => 6,
                 'user_id' => 4,
                 'key' => 'city',
-                'value' => 'Surabaya',
+                'value' => 'Surabaya, Indonesia',
                 'created_at' => '2016-05-31 14:45:07',
                 'updated_at' => '2016-05-31 14:45:07',
             ),
-            6 => 
+            3 => 
             array (
                 'id' => 7,
                 'user_id' => 4,
@@ -80,7 +53,7 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => '2016-05-31 14:45:07',
                 'updated_at' => '2016-05-31 14:45:07',
             ),
-            7 => 
+            4 => 
             array (
                 'id' => 8,
                 'user_id' => 4,
@@ -89,43 +62,7 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => '2016-05-31 14:45:07',
                 'updated_at' => '2016-05-31 14:45:07',
             ),
-            8 => 
-            array (
-                'id' => 9,
-                'user_id' => 5,
-                'key' => 'gender',
-                'value' => 'Male',
-                'created_at' => '2016-06-01 16:32:01',
-                'updated_at' => '2016-06-01 16:32:01',
-            ),
-            9 => 
-            array (
-                'id' => 10,
-                'user_id' => 5,
-                'key' => 'address',
-                'value' => 'DHI 43',
-                'created_at' => '2016-06-01 16:32:01',
-                'updated_at' => '2016-06-01 16:32:01',
-            ),
-            10 => 
-            array (
-                'id' => 11,
-                'user_id' => 5,
-                'key' => 'city',
-                'value' => 'Surabaya',
-                'created_at' => '2016-06-01 16:32:01',
-                'updated_at' => '2016-06-01 16:32:01',
-            ),
-            11 => 
-            array (
-                'id' => 12,
-                'user_id' => 5,
-                'key' => 'phone',
-                'value' => '081 737 5678',
-                'created_at' => '2016-06-01 16:32:01',
-                'updated_at' => '2016-06-01 16:32:01',
-            ),
-            12 => 
+            5 => 
             array (
                 'id' => 13,
                 'user_id' => 1,
@@ -134,14 +71,95 @@ class UserMetasTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 => 
+            6 => 
             array (
                 'id' => 14,
                 'user_id' => 2,
                 'key' => 'gender',
-                'value' => 'Male',
+                'value' => 'Female',
                 'created_at' => NULL,
                 'updated_at' => NULL,
+            ),
+            7 => 
+            array (
+                'id' => 27,
+                'user_id' => 1,
+                'key' => 'address',
+                'value' => 'Jl. Puncak Kertajaya',
+                'created_at' => '2016-06-20 10:24:50',
+                'updated_at' => '2016-06-20 10:24:50',
+            ),
+            8 => 
+            array (
+                'id' => 28,
+                'user_id' => 1,
+                'key' => 'city',
+                'value' => 'Surabaya',
+                'created_at' => '2016-06-20 10:24:50',
+                'updated_at' => '2016-06-20 10:24:50',
+            ),
+            9 => 
+            array (
+                'id' => 29,
+                'user_id' => 1,
+                'key' => 'phone',
+                'value' => '081 7525 5381',
+                'created_at' => '2016-06-20 10:24:50',
+                'updated_at' => '2016-06-20 10:24:50',
+            ),
+            10 => 
+            array (
+                'id' => 30,
+                'user_id' => 1,
+                'key' => 'dob',
+                'value' => '1988-10-28',
+                'created_at' => '2016-06-20 10:24:51',
+                'updated_at' => '2016-06-20 10:24:51',
+            ),
+            11 => 
+            array (
+                'id' => 31,
+                'user_id' => 1,
+                'key' => 'job',
+                'value' => 'Programmer',
+                'created_at' => '2016-06-20 10:24:51',
+                'updated_at' => '2016-06-20 10:24:51',
+            ),
+            12 => 
+            array (
+                'id' => 32,
+                'user_id' => 2,
+                'key' => 'address',
+                'value' => 'Avenue Road 53th',
+                'created_at' => '2016-06-20 10:27:06',
+                'updated_at' => '2016-06-20 10:27:06',
+            ),
+            13 => 
+            array (
+                'id' => 33,
+                'user_id' => 2,
+                'key' => 'city',
+                'value' => 'Los Angeles, USA',
+                'created_at' => '2016-06-20 10:27:06',
+                'updated_at' => '2016-06-20 10:27:06',
+            ),
+            14 => 
+            array (
+                'id' => 34,
+                'user_id' => 2,
+                'key' => 'phone',
+                'value' => '+155 994 04890',
+                'created_at' => '2016-06-20 10:27:06',
+                'updated_at' => '2016-06-20 10:27:06',
+            ),
+            15 => 
+            array (
+                'id' => 35,
+                'user_id' => 2,
+                'key' => 'dob',
+                'value' => '1980-11-02',
+                'created_at' => '2016-06-20 10:27:06',
+                'updated_at' => '2016-06-20 10:27:06',
             ),
         ));
         

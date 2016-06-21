@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="page-title">                    
-    <h2><span class="fa fa-key"></span> Add User Account</h2>
+    <h2 class="margin0"><span class="fa fa-key"></span> {{ $content->name }}</h2>
+    <p class="help-block help-block-indent">Last updated on {{ Helper::date_converter($content->updated_at, $mySetting['date_format'], $mySetting['time_format']) }}</p>
 </div>
 <div class="page-content-wrap">
     <div class="row">
@@ -18,12 +19,12 @@
                     <?php
                 }
             ?>
-            {{ Form::open([
+            {{ Form::model($content, [
               'class' => 'form-horizontal notif-change',
               'role' => 'form',
-              'method' => 'POST',
+              'method' => 'PATCH',
               'accept-charset' => 'UTF-8',
-              'route' => ['admin.users.store'],
+              'route' => ['admin.users.update', $content->id],
                ]) }}
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -33,89 +34,89 @@
                         <p class="notes important">* Red input MUST NOT be empty.</p>
                         
                         <div class="form-group">
-                            {{ Form::label('data[User][name]','Full Name',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('name','Full Name',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                    {{ Form::text('data[User][name]',null,['class'=>'form-control', 'required'=>'required']) }}
+                                    {{ Form::text('name',null,['class'=>'form-control', 'required'=>'required']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][gender]','Gender',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[gender]','Gender',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                       
-                                <label class="check">{{ Form::radio('data[UserMeta][gender]','Male',null, ['class' => 'icheckbox', 'required' => 'required']) }} Male</label>
-                                <label class="check">{{ Form::radio('data[UserMeta][gender]','Female',null, ['class' => 'icheckbox', 'required' => 'required']) }} Female</label>
+                                <label class="check">{{ Form::radio('user_metas[gender]','Male',null, ['class' => 'icheckbox', 'required' => 'required']) }} Male</label>
+                                <label class="check">{{ Form::radio('user_metas[gender]','Female',null, ['class' => 'icheckbox', 'required' => 'required']) }} Female</label>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][address]','Address',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[address]','Address',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-home"></span></span>
-                                    {{ Form::text('data[UserMeta][address]',null,['class'=>'form-control', 'required'=>'required']) }}
+                                    {{ Form::text('user_metas[address]',null,['class'=>'form-control', 'required'=>'required']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][city]','City',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[city]','City',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-globe"></span></span>
-                                    {{ Form::text('data[UserMeta][city]',null,['class'=>'form-control', 'required'=>'required']) }}
+                                    {{ Form::text('user_metas[city]',null,['class'=>'form-control', 'required'=>'required']) }}
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][phone]','Phone Number',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[phone]','Phone Number',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                    {{ Form::text('data[UserMeta][phone]',null,['class'=>'form-control', 'required'=>'required']) }}
+                                    {{ Form::text('user_metas[phone]',null,['class'=>'form-control', 'required'=>'required']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][dob]','Date of Birth',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[dob]','Date of Birth',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                    {{ Form::text('data[UserMeta][dob]',null,['class'=>'form-control datepicker input-medium']) }}
+                                    {{ Form::text('user_metas[dob]',null,['class'=>'form-control datepicker input-medium']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][job]','Job Position',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[job]','Job Position',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-briefcase"></span></span>
-                                    {{ Form::text('data[UserMeta][job]',null,['class'=>'form-control']) }}
+                                    {{ Form::text('user_metas[job]',null,['class'=>'form-control']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][company]','Company Name',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[company]','Company Name',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-group"></span></span>
-                                    {{ Form::text('data[UserMeta][company]',null,['class'=>'form-control']) }}
+                                    {{ Form::text('user_metas[company]',null,['class'=>'form-control']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[UserMeta][company_address]','Company Address',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('user_metas[company_address]','Company Address',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-building-o"></span></span>
-                                    {{ Form::text('data[UserMeta][company_address]',null,['class'=>'form-control']) }}
+                                    {{ Form::text('user_metas[company_address]',null,['class'=>'form-control']) }}
                                 </div>
                             </div>
                         </div>
@@ -125,43 +126,44 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            {{ Form::label('data[User][email]','Login Email',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('email','Login Email',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                    {{ Form::email('data[User][email]',null,['class'=>'form-control input-large', 'required' => 'required']) }}
+                                    {{ Form::email('email',null,['class'=>'form-control input-large', 'required' => 'required']) }}
                                 </div>                                            
                                 <span class="help-block">Please enter a valid email address as login authentication.</span>
                             </div>
                         </div>
                         
                         <div class="form-group">                                        
-                            {{ Form::label('data[User][password]','Password',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('password','New Password',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                    {{ Form::password('data[User][password]',['class' => 'form-control input-large', 'required' => 'required', 'pattern' => '.{5,}']) }}
+                                    {{ Form::password('password',['class' => 'form-control input-large', 'pattern' => '.{5,}']) }}
                                 </div>            
                                 <span class="help-block">Password must be at least 5 characters long.</span>
+                                <span class="help-block-important">NB: Ignore this field if you don't plan to change your current password.</span>
                             </div>
                         </div>
                         
                         <div class="form-group">                                        
-                            {{ Form::label('data[User][password_confirmation]','Password Confirm',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('password_confirmation','Password Confirm',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                    {{ Form::password('data[User][password_confirmation]',['class' => 'form-control input-large', 'required' => 'required']) }}
+                                    {{ Form::password('password_confirmation',['class' => 'form-control input-large']) }}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            {{ Form::label('data[User][role]','Role',['class'=>'col-md-3 col-xs-12 control-label']) }}
+                            {{ Form::label('status','Status',['class'=>'col-md-3 col-xs-12 control-label']) }}
                             <div class="col-md-6 col-xs-12">
-                                {{ Form::select('data[User][role]',[
-                                    'admin' => 'Administrator',
-                                    'regular_user' => 'Regular User',
+                                {{ Form::select('status',[
+                                    '1' => 'Active',
+                                    '0' => 'Disabled',
                                 ],null, [
                                     'class' => 'form-control select input-large',
                                     'required' => 'required',
@@ -172,7 +174,7 @@
                     </div>
                     <div class="panel-footer">
                         <a href="{{ route('admin.users.index') }}" class="btn btn-default">Cancel</a>
-                        <button type="submit" class="btn btn-primary pull-right">Add New</button>
+                        <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
                     </div>
                 </div>
             {{ Form::close() }}

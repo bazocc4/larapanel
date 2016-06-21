@@ -3,7 +3,7 @@
 @section('content')
 <div class="page-title">                    
     <h2 class="margin0"><span class="fa fa-cogs"></span> Settings</h2>
-    <p class="help-block help-block-cog">All kinds of web settings.</p>
+    <p class="help-block help-block-indent">All kinds of web settings.</p>
 </div>
 <div class="page-content-wrap">
     <div class="row">
@@ -14,7 +14,7 @@
                     ?>      
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                {{ session('success') }}
+                {!! session('success') !!}
             </div>
                     <?php
                 }

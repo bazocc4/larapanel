@@ -3194,6 +3194,7 @@ td.dataTables_empty {
   font-size: 12px;
   padding: 0px;
   line-height: 30px;
+  margin: 10px 0px;
 }
 .dataTables_paginate {
   padding: 0px;

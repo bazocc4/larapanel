@@ -7,9 +7,14 @@
     <?php
         for($i = 2 ; $i < $total_segments ; ++$i)
         {
-            $link .= "/" . Request::segment($i);
+            $value = Request::segment($i);
             
-            echo '<li><a href="'.$link.'">'.Helper::string_unslug(Request::segment($i)).'</a></li>';
+            $link .= "/".$value;
+            
+            if( ! is_numeric($value) )
+            {
+                echo '<li><a href="'.$link.'">'.Helper::string_unslug($value).'</a></li>';
+            }
         }
     ?>
     <li class="active">{{ Helper::string_unslug(Request::segment($total_segments)) }}</li>

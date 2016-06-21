@@ -83,7 +83,12 @@ class AuthController extends Controller
     
     public function logout()
     {
-        Auth::logout();
+        Auth::logout();        
+        if(!empty($this->user))
+        {
+            User::where('id', $this->user['id'] )->update(['updated_at' => $this->user['updated_at'] ]);
+        }
+        
         return redirect('admin/login')->with([
             'logout_response' => 'You have been logout.'
         ]);
